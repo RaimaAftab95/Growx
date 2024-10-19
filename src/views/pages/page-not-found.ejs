@@ -1,0 +1,36 @@
+<!doctype html>
+<!--[if IE 8]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+  <!--<![endif]-->
+
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+
+  <body class="body header-fixed counter-scroll">
+    <%- include('../components/preload.ejs') %>
+
+    <div id="wrapper">
+      <div id="page" class="pt-40">
+        <%- include('../partials/header') %>
+
+        <div class="section-404-page relative">
+          <div class="content">4<span class="tf-color">0</span>4</div>
+          <h2>Oh no... We lost this page</h2>
+          <p>
+            We searched everywhere but couldn’t find what you’re looking for.
+            <br />
+            Let’s find a better place for you to go.
+          </p>
+          <a href="index.html" class="tf-button w320 style-1 h50"
+            >Back to home<i class="icon-arrow-up-right2"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../components/progress-wrap.ejs') %><br />
+    <%- include('../partials/foot.ejs') %>
+  </body>
+</html>

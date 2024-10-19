@@ -1,0 +1,8 @@
+{
+  "env": {
+    "MONGO_CONNECTION_STRING": "mongodb://localhost:27017/growx",
+    "JWT_SECRET": "aVerySecretKey",
+    "NODE_ENV": "development",
+    "PORT": 1111
+  }
+}
