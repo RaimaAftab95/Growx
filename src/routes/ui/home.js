@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { renderHomePage } = require("../../controllers/ui/home.controller");
+const { renderHomePage } = require("../../controllers/ui/home");
 
 const router = express.Router();
 

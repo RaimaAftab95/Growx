@@ -1,9 +1,7 @@
-'use strict';
-
 class APIException extends Error {
   /**
    * @param {string} message
-   * @param {number} status 
+   * @param {number} status
    */
   constructor(message, status) {
     super(message);
@@ -13,7 +11,7 @@ class APIException extends Error {
 
 class BadRequestException extends APIException {
   /**
-   * @param {string} message 
+   * @param {string} message
    */
   constructor(message) {
     super(message, 400);
@@ -22,7 +20,7 @@ class BadRequestException extends APIException {
 
 class NotFoundException extends APIException {
   /**
-   * @param {string} message 
+   * @param {string} message
    */
   constructor(message) {
     super(message, 404);
@@ -31,7 +29,7 @@ class NotFoundException extends APIException {
 
 class InternalServerErrorException extends APIException {
   /**
-   * @param {string} message 
+   * @param {string} message
    */
   constructor(message) {
     super(message, 500);
@@ -40,7 +38,7 @@ class InternalServerErrorException extends APIException {
 
 class UnauthorizedException extends APIException {
   /**
-   * @param {string} message 
+   * @param {string} message
    */
   constructor(message) {
     super(message, 401);
@@ -49,7 +47,7 @@ class UnauthorizedException extends APIException {
 
 class UnprocessableContentException extends APIException {
   /**
-   * @param {string} message 
+   * @param {string} message
    */
   constructor(message) {
     super(message, 422);
@@ -61,5 +59,5 @@ module.exports = {
   NotFoundException,
   InternalServerErrorException,
   UnauthorizedException,
-  UnprocessableContentException
+  UnprocessableContentException,
 };

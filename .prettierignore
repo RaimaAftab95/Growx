@@ -1,0 +1,11 @@
+# VSCode Settings
+.vscode
+
+# Node Modules
+node_modules
+
+# Public Folder
+public
+
+# Templats Folder
+templates

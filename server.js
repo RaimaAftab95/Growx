@@ -1,5 +1,3 @@
-"use strict";
-
 const { connect } = require("mongoose");
 
 const server = require("./src/app");
@@ -11,7 +9,7 @@ const { PORT, MONGO_CONNECTION_STRING } = process.env;
     const conn = await connect(MONGO_CONNECTION_STRING);
 
     console.log(
-      `Connected to MongoDB host: ${conn.connection.host} and database: ${conn.connection.name}`
+      `Connected to MongoDB host: ${conn.connection.host} and database: ${conn.connection.name}`,
     );
 
     server.listen(PORT, () => {

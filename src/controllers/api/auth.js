@@ -1,14 +1,9 @@
-"use strict";
-
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const User = require("../models/user.model");
+const User = require("../../models/user.model");
 
-const {
-  InternalServerErrorException,
-  BadRequestException,
-} = require("../utils/exceptions.util");
+const { BadRequestException } = require("../../utils/exceptions.util");
 
 const { JWT_SECRET } = process.env;
 
@@ -68,6 +63,7 @@ async function registerUser(req, res, next) {
       token,
     });
   } catch (err) {
+    console.error(err);
     next(new BadRequestException(err.message));
   }
 }

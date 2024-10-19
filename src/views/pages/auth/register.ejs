@@ -1,0 +1,186 @@
+<!doctype html>
+<!--[if IE 8]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+  <!--<![endif]-->
+
+  <head>
+    <%- include('../../partials/head.ejs') %>
+  </head>
+
+  <body class="body counter-scroll">
+    <%- include('../../components/preload.ejs') %>
+
+    <div id="wrapper">
+      <div id="page" class="pt-40">
+        <%- include('../../partials/header') %>
+
+        <div class="tf-section-2 pt-60 widget-box-icon">
+          <div class="themesflat-container w920">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="heading-section-1">
+                  <h2 class="tf-title pb-16">Create you account</h2>
+                  <p class="pb-40">Let’s get started with your free account</p>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="widget-login">
+                  <form id="RegisterForm" class="comment-form" method="post">
+                    <fieldset class="name">
+                      <label>Name *</label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder="Your name*"
+                        name="fullName"
+                        tabindex="2"
+                        aria-required="true"
+                        required
+                      />
+                    </fieldset>
+                    <fieldset class="email">
+                      <label>Email *</label>
+                      <input
+                        type="email"
+                        id="email"
+                        placeholder="mail@website.com"
+                        name="email"
+                        tabindex="2"
+                        aria-required="true"
+                        required
+                      />
+                    </fieldset>
+                    <fieldset class="password">
+                      <label>Password *</label>
+                      <input
+                        class="password-input"
+                        type="password"
+                        id="password"
+                        placeholder="Min. 8 character"
+                        name="password"
+                        tabindex="2"
+                        aria-required="true"
+                        required
+                      />
+                      <i
+                        class="icon-show password-addon"
+                        id="password-addon"
+                      ></i>
+                    </fieldset>
+                    <fieldset class="password">
+                      <label>Confirm password *</label>
+                      <input
+                        class="password-input"
+                        type="password"
+                        id="password-confirm"
+                        placeholder="Confirm password "
+                        name="password"
+                        tabindex="2"
+                        aria-required="true"
+                        required
+                      />
+                      <i
+                        class="icon-show password-addon"
+                        id="password-addon"
+                      ></i>
+                      <div class="widget-category-checkbox">
+                        <label style="margin-left: -34px"
+                          >By signing up, you agree to our
+                          <a href="/terms">Terms</a>,
+                          <a href="/privacy">Privacy Policy</a>, and
+                          <a href="/fees">Fees</a>.
+                        </label>
+                      </div>
+                    </fieldset>
+                    <div class="btn-submit mb-30">
+                      <button
+                        id="submitForm"
+                        class="tf-button style-1 h50 w-100"
+                        type="submit"
+                      >
+                        Sign up
+
+                        <i id="loadingIcon" class="icon-loading-1"></i>
+                        <i id="arrowIcon" class="icon-arrow-up-right2"></i>
+                      </button>
+                    </div>
+                  </form>
+                  <div class="no-account">
+                    Already have an account?
+                    <a href="/auth/login" class="tf-color">Log in</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%- include('../../partials/footer') %>
+      </div>
+    </div>
+
+    <%- include('../../components/progress-wrap.ejs') %><br />
+    <%- include('../../partials/foot.ejs') %>
+
+    <script type="text/javascript">
+      function setLoading() {
+        jQuery("#submitForm").prop("disabled", true);
+        jQuery("#loadingIcon").show();
+        jQuery("#arrowIcon").hide();
+      }
+
+      function unSetLoading() {
+        jQuery("#submitForm").prop("disabled", false);
+        jQuery("#loadingIcon").hide();
+        jQuery("#arrowIcon").show();
+      }
+
+      jQuery(document).ready(function () {
+        jQuery("#loadingIcon").hide();
+
+        jQuery("#RegisterForm").on("submit", function (e) {
+          e.preventDefault();
+
+          setLoading();
+
+          const payload = {};
+
+          const formData = jQuery(this).serializeArray();
+          formData.forEach((item) => {
+            payload[item.name] = item.value;
+          });
+
+          jQuery.ajax({
+            url: "/api/v1/auth/register",
+            type: "POST",
+            data: JSON.stringify(payload),
+            contentType: "application/json",
+            success: function (response) {
+              localStorage.setItem("token", response.token);
+              window.location.href = "/dashboard";
+            },
+            error: function (error) {
+              const { status, responseJSON } = error;
+
+              if (status === 400) {
+                alert(responseJSON.msg);
+                unSetLoading();
+                return;
+              }
+
+              if (status === 422) {
+                alert(responseJSON.errors[0].msg);
+                unSetLoading();
+                return;
+              }
+
+              alert("An error occurred. Please try again later.");
+              unSetLoading();
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

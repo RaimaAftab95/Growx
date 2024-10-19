@@ -1,5 +1,3 @@
-"use strict";
-
 const { body } = require("express-validator");
 
 const {
@@ -28,10 +26,10 @@ const validateRegisterUser = [
     .isLength({ min: 8 })
     .withMessage("Password must be at least 6 characters long")
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
     )
     .withMessage(
-      "Password must contain at least one lowercase letter, one uppercase letter, one number and one special character"
+      "Password must contain at least one lowercase letter, one uppercase letter, one number and one special character",
     )
     .trim(),
   handleValidationError,
@@ -47,10 +45,10 @@ const validateLoginUser = [
     .isLength({ min: 8 })
     .withMessage("Password must be at least 6 characters long")
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
     )
     .withMessage(
-      "Password must contain at least one lowercase letter, one uppercase letter, one number and one special character"
+      "Password must contain at least one lowercase letter, one uppercase letter, one number and one special character",
     )
     .trim(),
   handleValidationError,

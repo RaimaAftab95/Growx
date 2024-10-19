@@ -5,15 +5,15 @@
   <!--<![endif]-->
 
   <head>
-    <%- include('../partials/head') %>
+    <%- include('../../partials/head.ejs') %>
   </head>
 
   <body class="body counter-scroll">
-    <%- include('../components/preload.ejs') %>
+    <%- include('../../components/preload.ejs') %>
 
     <div id="wrapper">
       <div id="page" class="pt-40">
-        <%- include('../partials/header') %>
+        <%- include('../../partials/header') %>
 
         <div class="tf-section-2 pt-60 widget-box-icon">
           <div class="themesflat-container w920">
@@ -28,7 +28,7 @@
               </div>
               <div class="col-12">
                 <div class="widget-login">
-                  <form id="commentform" class="comment-form">
+                  <form id="loginForm" class="comment-form" method="post">
                     <fieldset class="email">
                       <label>Email *</label>
                       <input
@@ -37,7 +37,6 @@
                         placeholder="mail@website.com"
                         name="email"
                         tabindex="2"
-                        value=""
                         aria-required="true"
                         required
                       />
@@ -51,7 +50,6 @@
                         placeholder="Min. 8 character"
                         name="password"
                         tabindex="2"
-                        value=""
                         aria-required="true"
                         required
                       />
@@ -64,18 +62,22 @@
                       </div>
                     </fieldset>
                     <div class="btn-submit mb-30">
-                      <a
-                        href="market.html"
+                      <button
+                        id="submitForm"
                         class="tf-button style-1 h50 w-100"
                         type="submit"
-                        >Login<i class="icon-arrow-up-right2"></i
-                      ></a>
+                      >
+                        Login
+
+                        <i id="loadingIcon" class="icon-loading-1"></i>
+                        <i id="arrowIcon" class="icon-arrow-up-right2"></i>
+                      </button>
                     </div>
                   </form>
 
                   <div class="no-account">
                     Don't have an account?
-                    <a href="/register" class="tf-color">Sign up</a>
+                    <a href="/auth/register" class="tf-color">Sign up</a>
                   </div>
                 </div>
               </div>
@@ -83,11 +85,65 @@
           </div>
         </div>
 
-        <%- include('../partials/footer') %>
+        <%- include('../../partials/footer') %>
       </div>
     </div>
 
-    <%- include('../components/progress-wrap.ejs') %><br />
-    <%- include('../partials/foot.ejs') %>
+    <%- include('../../components/progress-wrap.ejs') %><br />
+    <%- include('../../partials/foot.ejs') %>
+
+    <script type="text/javascript">
+      function setLoading() {
+        jQuery("#submitForm").prop("disabled", true);
+        jQuery("#loadingIcon").show();
+        jQuery("#arrowIcon").hide();
+      }
+
+      function unSetLoading() {
+        jQuery("#submitForm").prop("disabled", false);
+        jQuery("#loadingIcon").hide();
+        jQuery("#arrowIcon").show();
+      }
+
+      jQuery(document).ready(function () {
+        jQuery("#loadingIcon").hide();
+
+        jQuery("#loginForm").on("submit", function (e) {
+          e.preventDefault();
+
+          setLoading();
+
+          const payload = {};
+
+          const formData = jQuery(this).serializeArray();
+          formData.forEach((item) => {
+            payload[item.name] = item.value;
+          });
+
+          jQuery.ajax({
+            url: "/api/v1/auth/login",
+            type: "POST",
+            data: JSON.stringify(payload),
+            contentType: "application/json",
+            success: function (response) {
+              localStorage.setItem("token", response.token);
+              window.location.href = "/dashboard";
+            },
+            error: function (error) {
+              const { status, responseJSON } = error;
+
+              if (status === 400) {
+                alert(responseJSON.msg);
+                unSetLoading();
+                return;
+              }
+
+              alert("An error occurred. Please try again later.");
+              unSetLoading();
+            },
+          });
+        });
+      });
+    </script>
   </body>
 </html>

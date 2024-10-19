@@ -1,5 +1,3 @@
-"use strict";
-
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -16,11 +14,13 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
 // UI Routes
-app.use("/", require("./routes/ui/home.route"));
-app.use("/login", require("./routes/ui/login.route"));
+app.use("/", require("./routes/ui/home"));
+app.use("/auth", require("./routes/ui/auth"));
+app.use("/explore", require("./routes/ui/explore"));
+app.use("/nft", require("./routes/ui/nft"));
 
 // API Routes
-app.use("/api/v1/auth", require("./routes/auth.route"));
+app.use("/api/v1/auth", require("./routes/api/auth"));
 
 app.use(function (_req, res) {
   res.status(404).render("pages/page-not-found", {

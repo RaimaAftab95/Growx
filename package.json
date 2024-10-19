@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --trace-warnings server.js",
-    "format:ejs": "prettier --write '**/*.ejs'"
+    "format": "prettier --write ."
   },
   "author": "Qaisar Khan",
   "license": "ISC",
@@ -12,7 +12,7 @@
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
-    "express": "^4.21.0",
+    "express": "^4.21.1",
     "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.0",
