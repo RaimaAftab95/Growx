@@ -18,6 +18,7 @@ app.use("/", require("./routes/ui/home"));
 app.use("/auth", require("./routes/ui/auth"));
 app.use("/explore", require("./routes/ui/explore"));
 app.use("/nft", require("./routes/ui/nft"));
+app.use("/dashboard", require("./routes/ui/dashboard"));
 
 // API Routes
 app.use("/api/v1/auth", require("./routes/api/auth"));
