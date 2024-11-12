@@ -1,11 +1,13 @@
 /**
  * Renders the dashboard page
- * @param {import('express').Request} _req Request
+ * @param {import('express').Request} req Request
  * @param {import('express').Response} res Response
  */
-function renderDashboardPage(_req, res) {
+function renderDashboardPage(req, res) {
+  
   res.render("pages/dashboard", {
     title: "Dashboard",
+    user: req.user,
   });
 }
 
@@ -17,6 +19,7 @@ function renderDashboardPage(_req, res) {
 function renderActiveBidPage(_req, res) {
   res.render("pages/active-bid", {
     title: "Active Bid",
+    user: req.user,
   });
 }
 
@@ -28,6 +31,7 @@ function renderActiveBidPage(_req, res) {
 function renderCreatePage(_req, res) {
   res.render("pages/create", {
     title: "Create",
+    user: req.user,
   });
 }
 
@@ -39,6 +43,7 @@ function renderCreatePage(_req, res) {
 function renderFavoritePage(_req, res) {
   res.render("pages/favorite", {
     title: "Favorite",
+    user: req.user,
   });
 }
 
@@ -50,6 +55,7 @@ function renderFavoritePage(_req, res) {
 function renderExplorePage(_req, res) {
   res.render("pages/explore-dashboard", {
     title: "Explore",
+    user: req.user,
   });
 }
 
@@ -62,6 +68,7 @@ function renderExplorePage(_req, res) {
 function renderHistoryPage(_req, res) {
   res.render("pages/history", {
     title: "History",
+    user: req.user,
   });
 }
 
@@ -74,6 +81,7 @@ function renderHistoryPage(_req, res) {
 function renderMarketPage(_req, res) {
   res.render("pages/market", {
     title: "Market",
+    user: req.user,
   });
 }
 
@@ -85,6 +93,7 @@ function renderMarketPage(_req, res) {
 function renderSettingsPage(_req, res) {
   res.render("pages/settings", {
     title: "Settings",
+    user: req.user,
   });
 }
 
@@ -96,6 +105,7 @@ function renderSettingsPage(_req, res) {
 function renderCollectionPage(_req, res) {
   res.render("pages/tf-collection", {
     title: "TF-Collection",
+    user: req.user,
   });
 }
 
@@ -107,6 +117,7 @@ function renderCollectionPage(_req, res) {
 function renderWalletPage(_req, res) {
   res.render("pages/wallet", {
     title: "Wallet",
+    user: req.user,
   });
 }
 

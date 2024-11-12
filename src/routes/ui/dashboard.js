@@ -13,17 +13,22 @@ const {
   renderWalletPage,
 } = require("../../controllers/ui/dashboard");
 
+const { requireAuth } = require("../../middleware/auth.middleware");
+
 const router = express.Router();
 
-router.get("/", renderDashboardPage);
-router.get("/active-bid", renderActiveBidPage);
-router.get("/create", renderCreatePage);
-router.get("/favorite", renderFavoritePage);
-router.get("/explore-dashboard", renderExplorePage);
-router.get("/history", renderHistoryPage);
-router.get("/market", renderMarketPage);
-router.get("/settings", renderSettingsPage);
-router.get("/tf-collection", renderCollectionPage);
-router.get("/wallet", renderWalletPage);
+ router.get("/", requireAuth, renderDashboardPage);
+// router.get('/dashboard', requireAuth, (req, res) => {
+//   res.json({ message: 'Welcome to the Dashboard!', user: req.user });
+// });
+router.get("/active-bid", requireAuth, renderActiveBidPage);
+router.get("/create", requireAuth, renderCreatePage);
+router.get("/favorite", requireAuth, renderFavoritePage);
+router.get("/explore-dashboard", requireAuth, renderExplorePage);
+router.get("/history", requireAuth, renderHistoryPage);
+router.get("/market", requireAuth, renderMarketPage);
+router.get("/settings", requireAuth, renderSettingsPage);
+router.get("/tf-collection", requireAuth, renderCollectionPage);
+router.get("/wallet", requireAuth, renderWalletPage);
 
 module.exports = router;
