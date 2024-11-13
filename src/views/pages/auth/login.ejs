@@ -127,7 +127,6 @@
             contentType: "application/json",
             success: function (response) {
               localStorage.setItem("token", response.token);
-              console.log("Token:", response.token);
               window.location.href = "/dashboard";
             },
             error: function (error) {
