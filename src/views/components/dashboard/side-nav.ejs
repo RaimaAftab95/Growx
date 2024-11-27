@@ -1,0 +1,71 @@
+<div class="section-menu-left">
+  <div class="box-logo">
+      <a href="index.html"><img src="/assets/images/logo/logo.png" alt="logo"></a>
+  </div>
+  <div class="create menu-tab">
+      <a href="/dashboard/create"  class="tf-button style-1 type-1 tablinks <%= title === 'Create' ? 'active' : '' %>" data-tabs="create">
+          <span>Create</span>
+          <i class="icon-create"></i>
+      </a>
+  </div>
+  <div class="over-content">
+      <div class="content">
+          <h6>Marketplace</h6>
+          <ul class="menu-tab">
+              <li class="tablinks <%= title === 'Market' ? 'active' : '' %>" data-tabs="market">
+               <a href="/dashboard/market">
+                      <%- include('../../icons/market.ejs') %> Market
+                  </a>
+              </li>
+              <li class="tablinks <%= title === 'Active Bid' ? 'active' : '' %>" data-tabs="bid">
+                  <a href="/dashboard/active-bid">
+                      <%- include('../../icons/active-bid.ejs') %> Active Bid
+                  </a>
+              </li>
+              <li class="tablinks <%= title === 'Explore' ? 'active' : '' %>" data-tabs="explore">
+               <a href="/dashboard/explore-dashboard">
+                      <%- include('../../icons/explore.ejs') %> Explore
+                  </a>
+              </li>
+          </ul>
+      </div>
+      <div class="content mt-30">
+          <h6>Account</h6>
+          <ul class="menu-tab">
+              <li class="tablinks <%= title === 'My Collection' ? 'active' : '' %>" data-tabs="tf-collection">
+                    <a href="/dashboard/tf-collection">
+                      <%- include('../../icons/mycollection.ejs') %> My Collection
+                  </a>
+              </li>
+              <li class="tablinks <%= title === 'My Favorite' ? 'active' : '' %>" data-tabs="favorite">
+                   <a href="/dashboard/favorite">
+                      <%- include('../../icons/myfavorite.ejs') %> My Favorite
+                  </a>
+              </li>
+              <li class="tablinks <%= title === 'Wallet' ? 'active' : '' %>" data-tabs="wallet">
+                    <a href="/dashboard/wallet">
+                      <%- include('../../icons/wallet.ejs') %> Wallet
+                  </a>
+              </li>
+              <li class="tablinks <%= title === 'History' ? 'active' : '' %>" data-tabs="history">
+                  <a href="/dashboard/history">
+                      <%- include('../../icons/history.ejs') %> History
+                  </a>
+              </li>
+              <li class="tablinks <%= title === 'Settings' ? 'active' : '' %>" data-tabs="settings">
+                <a href="/dashboard/settings">
+                      <%- include('../../icons/settings.ejs') %> Settings
+                  </a>
+              </li>
+              <li>
+                  <a href="index.html">Logout</a>
+                  <%- include('../../icons/logout.ejs') %>
+              </li>
+          </ul>
+      </div>
+  </div>
+  <div class="bottom">
+      <p>© 2023 OpeN9</p>
+      <p>Made By Themesflat</p>
+  </div>
+</div>

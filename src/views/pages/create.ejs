@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <%- include('../partials/head.ejs') %>
+</head>
+
+<body class="body dashboard1">
+  <%- include('../components/preload.ejs') %>
+    
+  <div id="wrapper">
+    <div id="page" class="market-page">
+      <%- include('../components/dashboard/header.ejs') %>
+
+      <div class="flat-tabs">
+        <%- include('../components/dashboard/side-nav.ejs') %>
+         
+        <div class="content-tabs">
+            
+            <div id="create" class="tabcontent active">
+                        <div class="wrapper-content-create">
+                            <div class="heading-section">
+                                <h2 class="tf-title pb-30">Create New File</h2>
+                            </div>
+                            <div class="widget-tabs relative">
+                                <ul class="widget-menu-tab">
+                                    <li class="item-title active">
+                                        <span class="inner"><span class="order"></span> User Deposit Request</span>
+                                    </li>
+                                </ul>
+                                <div class="widget-content-tab">
+                                    <div class="widget-content-inner upload active">
+                                        <div class="wrap-upload w-full">
+                                            <form action="#">
+                                                <label class="uploadfile">
+                                                    <img src="/assets/images/box-icon/upload.png" alt="upload-img">
+                                                    <h5>Upload Screenshot</h5>
+                                                    <p class="text">Drag or choose your file to upload</p>
+                                                    <div class="text filename">PNG, GIF, WEBP, MP4 or MP3.Max 1Gb.</div>
+                                                    <input type="file" class="" name="file">
+                                                </label>
+                                            </form>
+                                        </div>
+                                        <div class="wrap-content w-full">
+                                            <form   id="commentform" class="comment-form" novalidate="novalidate">
+                                                <fieldset class="name">
+                                                    <label>Name *</label>
+                                                    <input type="text" id="name" placeholder="Product name" name="name" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <div class="flex gap30">
+                                                    <fieldset class="price">
+                                                        <label>Amount</label>
+                                                        <input type="text" id="price" placeholder="Price" name="price" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                    <fieldset class="properties">
+                                                        <label>Transaction Hash</label>
+                                                        <input type="text" id="properties" placeholder="transaction identifier" name="properties" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                </div>
+                                                <fieldset class="blockchain">
+                                                    <label>Blockchain</label>
+                                                    <div class="widget-coins flex gap30 flex-wrap">
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="/assets/images/box-icon/coin-01.png" alt="coin-img">
+                                                            <p><a href="#">Bitcoin</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="/assets/images/box-icon/coin-02.png" alt="coin-img">
+                                                            <p><a href="#">Ethereum</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="/assets/images/box-icon/coin-03.png" alt="coin-img">
+                                                            <p><a href="#">Cardano</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="/assets/images/box-icon/coin-04.png" alt="coin-img">
+                                                            <p><a href="#">Solana</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="/assets/images/box-icon/coin-05.png" alt="coin-img">
+                                                            <p><a href="#">Litecoin</a></p>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                              
+                                                <div class="btn-submit flex gap30 justify-center">
+                                                    <button class="tf-button style-1 h50 w320 active">Preview<i class="icon-arrow-up-right2"></i></button>
+                                                    <button class="tf-button style-1 h50 w320" type="submit">Submit item<i class="icon-arrow-up-right2"></i></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+           
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <div class="tf-mouse tf-mouse-outer"></div>
+<div class="tf-mouse tf-mouse-inner"></div>
+  <%- include('../components/progress-wrap.ejs') %><br />
+  <%- include('../partials/foot.ejs') %>
+</body>
+
+</html>
