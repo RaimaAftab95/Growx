@@ -92,4 +92,6 @@ npm start
 ✅ Enhance UI with Tailwind CSS
 ✅ Add Web3.js integration for blockchain transactions
 
-![Project Screenshot]-https://github.com/RaimaAftab95/Growx/issues/1
+![Project Screenshot]
+[View Project Screenshots](https://github.com/RaimaAftab95/Growx/issues/1)
+
