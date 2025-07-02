@@ -36,7 +36,7 @@ growx/
  ├── Dockerfile
  ├── README.md
 
-
+```
 ## 📌 Features  
 
 ✅ **Separation of HTML Templates into EJS** – Converted static HTML files into **EJS templates** for dynamic rendering.  
